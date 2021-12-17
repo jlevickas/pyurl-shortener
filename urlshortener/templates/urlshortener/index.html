@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>URL SHORTENER</h1>
+{% extends 'urlshortener/base_generic.html' %}
+{% block body %}
     <form action="" method="post">
         {% csrf_token %}
         {{urlInput}}
         <input type="submit" value="Shorten">
     </form>
-    <p>{{statusMessage}}</p>
-</body>
-</html>
+    {% if fullURL %}
+        <a href={{fullURL}}>{{fullURL}}</a>
+    {% elif fullURL != '' %}
+        <p>Enter a valid URL</p>
+    {% endif %}
+{% endblock %}
