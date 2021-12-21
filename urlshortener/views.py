@@ -23,6 +23,8 @@ def index(request):
 
             if isvalid:
                 absolute_url = get_url(url, absolute)
+            else:
+                absolute_url = None
 
     return render(request, "urlshortener/index.html", {"urlInput": form, "fullURL": absolute_url})
 
